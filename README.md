@@ -105,3 +105,7 @@ The function is used to generate the data set used during the analysis part of o
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
+## Sources
+
+* The initial framework and a couple of algorithm implementations were derived from the [TSP Algorithm Suite](https://github.com/InFoMM/TSP) developed by the Industrially Focused Mathematical Modelling (InFoMM) Group at the University of Oxford.
+* All TSP instances used in the conduction of this analysis were part of [TSPLIB95](https://wwwproxy.iwr.uni-heidelberg.de/groups/comopt/software/TSPLIB95/) published by the Ruprecht-Karls-Universität Heidelberg.
