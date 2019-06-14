@@ -60,6 +60,8 @@ Its function is pretty simple:
 4. After the for-loop has been executed, two MS DOS commands are executed.
     1. cmd1 aggregates all .part files generated during the solving process into [one .csv file](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/data/data02.csv).
     2. cmd2 deletes all .part files.
+    
+**The implementation of the algorithms can be found [here](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/algorithms/).**
 
 As described previously, [algo_stats_analysis](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/algo_stats_analysis.m) is the main function used to solve the tsp instance:
 ```Matlab
@@ -76,7 +78,7 @@ function [] = algo_stats_analysis(graph, f, algo, varargin)
     ...
 end
 ```
-The function is used to generate the data set used during the analysis part of our research. It simply takes the graph construct previously generated in [analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m#L15), the solver function and the name of the algorithm. It then uses [parfor-loops](https://ch.mathworks.com/help/parallel-computing/parfor.html) which is part of MATLABs [Parallel Computing Toolbox](https://ch.mathworks.com/products/parallel-computing.html) to concurrently solve the tsp instance 100 times using the provided solver function. During each computation cycle, a .part file is generated and the results of the solver is saved in this file. The results are stored in separate files in order to bypass potential file corruption issues that could occur during concurrent I/O functions (file writing). The following information is stored per cycle execution:
+The function is used to generate the data set used during the analysis part of our research. It simply takes the graph construct previously generated in [analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m#L15), the solver function and the name of the algorithm. It then uses [parfor-loops](https://ch.mathworks.com/help/parallel-computing/parfor.html) which is part of MATLABs [Parallel Computing Toolbox](https://ch.mathworks.com/products/parallel-computing.html) to concurrently solve the tsp instance 100 times using the provided solver function. During each computation cycle, a .part file is generated and the results of the solver is saved in this file. The results are stored in separate files in order to bypass potential file corruption issues that could occur during concurrent I/O functions (file writing). The following information is stored per .part file:
 * **algorithm**:**tspInstance**:**executionNo**:**calculatedDistance**:**executionDurationInSec**
     1. *algorithm*, name of the used algorithm
     2. *tspInstance*, name of the solved tsp instance
@@ -84,7 +86,6 @@ The function is used to generate the data set used during the analysis part of o
     4. *calculatedDistance*, distance of the shortest path as calculated by the algorithm, as floating-point number
     5. *executionDurationInSec*, time duration between start and end of the solving process in seconds, as floating-point number
 * e.g. opt_greedy:ch150:22:7078.4447:0.24991
-
 
 ## Prerequisits
 
@@ -101,8 +102,8 @@ The function is used to generate the data set used during the analysis part of o
   * [xml2struct ext.](https://ch.mathworks.com/matlabcentral/fileexchange/58700-xml2struct-with-bug-fix-and-added-features) - An improved version of xml2struct that converts xml documents into MATLAB structures.
   
 ## Analysis Conducted With
-[AMD Ryzen 7 1700 - 16x3.7GHz](https://www.amd.com/en/products/cpu/amd-ryzen-7-1700)
-[16GB Dual Channel DDR4 RAM @2400MHz](https://www.gskill.com/en/product/f4-2400c16d-16gfx)
+* [AMD Ryzen 7 1700 - 16x3.7GHz](https://www.amd.com/en/products/cpu/amd-ryzen-7-1700)
+* [16GB Dual Channel DDR4 RAM @2400MHz](https://www.gskill.com/en/product/f4-2400c16d-16gfx)
 
 ## Authors
 
