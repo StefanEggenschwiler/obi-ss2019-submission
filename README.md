@@ -23,7 +23,7 @@ The artefacts sole purpose is to solve multiple tsp problems with several differ
 %     The fiels array is a array of strings corresponding to the .tsp files
 %     stored in the /problems/tsp folder. 
 
-files = ["berlin52", "burma14", "ch130", "ch150", "eil51", "eil76", "eil101", "gr96", "gr202", "gr666", "kroA100", "kroC100", "kroD100", "lin105", "pr76", "rd100", "st70", "tsp225", "ulysses16", "ulysses22", "pr1002", "pr2392"];
+files = ["berlin52", "burma14", "ch130", "ch150", "eil51", "eil76", "eil101", "gr96", "gr202", "gr666", ...];
 
 for file = files
     [name, edge_weight_type, coord] = import_tsp(file);
