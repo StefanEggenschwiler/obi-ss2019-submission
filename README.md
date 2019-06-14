@@ -5,7 +5,7 @@ This is the repository of the prototype artefacts developed to conduct the analy
 
 ## Getting Started
 
-The artefacts were developed using the latest version of MATLAB and several add-ons listed under [this](#prerequisits) section.
+The artefacts were developed using the latest version of MATLAB and several add-ons. A full list of prerequisits can be in [this](#prerequisits) section.
 
 ## Manual
 
