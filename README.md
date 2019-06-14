@@ -7,7 +7,7 @@ This is the repository of the prototype artefacts developed to conduct the analy
 
 The artefacts were developed using the latest version of MATLAB and several add-ons. A full list of prerequisits can be in [this](#prerequisits) section.
 
-## Manual
+## Description
 
 The artefacts sole purpose is to solve multiple tsp problems with several different algorithms and output metrics of each solving round as a line of text in a text file. All files aggregated produce the data set which can then being used to conduct an analysis and compare the performance of the different algorithms.
 
@@ -69,7 +69,7 @@ function [] = algo_stats_analysis(graph, f, algo, varargin)
     ...
 end
 ```
-The function is used to generate the data set used during the analysis part of our research. It simply takes the graph construct previously generated in [analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m#L15), the solver function and the name of the algorithm. It then uses [parfor-loops](https://ch.mathworks.com/help/parallel-computing/parfor.html) which is part of MATLABs [Parallel Computing Toolbox](https://ch.mathworks.com/products/parallel-computing.html) to concurrently solve the tsp instance 100 times using the provided solver function. Thanks to our utilised [hardware platform](#analysis-conducted-with), we were able to solve up to 16 tsp instances at once, therefore greatly reducing the overall computation time. During each computation cycle, a .part file is generated and the results of the solver is saved in this file. The results are stored in separate files in order to bypass potential file corruption issues that could occur during concurrent I/O functions (file writing). The following information is stored per .part file:
+The function is used to generate the data set used during the analysis part of our research. It simply takes the graph construct previously generated in [analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m#L15), the solver function and the name of the algorithm. It then uses [parfor-loops](https://ch.mathworks.com/help/parallel-computing/parfor.html) which is part of MATLABs [Parallel Computing Toolbox](https://ch.mathworks.com/products/parallel-computing.html) to concurrently solve the tsp instance 100 times using the provided solver function. Thanks to our utilised [hardware platform](#analysis-conducted-with), we were able to solve up to 16 tsp instances at once, therefore greatly reducing the overall computation time. During each computation cycle, a .part file is generated and the results of the solver is saved in this file. The results are stored in separate files in order to bypass potential file corruption issues that could occur during concurrent I/O operations (file writing). The following information is stored per .part file:
 * **algorithm**:**tspInstance**:**executionNo**:**calculatedDistance**:**executionDurationInSec**
     1. *algorithm*, name of the used algorithm
     2. *tspInstance*, name of the solved tsp instance
