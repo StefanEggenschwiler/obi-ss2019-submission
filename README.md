@@ -28,7 +28,7 @@ for file = files
     algo_stats_analysis(graph, @pso_opt, 'pso', 'spso');
     algo_stats_analysis(graph, @ant_colony_opt, 'aco');
 end
-cmd1 = strcat('type ..\..\data\*.part > ..\..\data\', 'pr2392_aco100', '.csv');
+cmd1 = strcat('type ..\..\data\*.part > ..\..\data\', 'data02', '.csv');
 cmd2 = strcat('del ..\..\data\*.part');
 
 system(cmd1);
