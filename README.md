@@ -11,7 +11,7 @@ The artefacts were developed using the latest version of MATLAB and several add-
 
 The artefacts sole purpose is to solve multiple tsp problems with several different algorithms and output metrics of each solving round as a line of text in a text file. All files aggregated produce the data set which can then being used to conduct an analysis and compare the performance of the different algorithms.
 
-[analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m) is the main script which executed the artefact.
+[analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m) is the main script which executed the artefact:
 ```Matlab
 files = ["berlin52", "burma14", "ch130", "ch150", "eil51", "eil76", "eil101", "gr96", "gr202", "gr666", ...];
 
