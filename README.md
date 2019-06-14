@@ -48,7 +48,7 @@ Its function is pretty simple:
     * The algorithm function to be executed
     * The name of the algorithm (used in the log file generation)
     * additionally for the PSO algorithm, which one of the three implementations of the PSO algorithm should be used
-4. After the for-loop has been executed, two MS DOS commands are executed.
+4. After the for-loop has concluded, two MS DOS commands are executed. (This section of the MATLAB script is only usable if MATLAB is installed on a computer with MS Windows operating system.
     1. cmd1 aggregates all .part files generated during the solving process into [one .csv file](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/data/data02.csv).
     2. cmd2 deletes all .part files.
     
