@@ -13,15 +13,6 @@ The artefacts sole purpose is to solve multiple tsp problems with several differ
 
 [analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m) is the main script which executed the artefact.
 ```Matlab
-% Author:
-%     Stefan Eggenschwiler, May 2019.
-% 
-% Description: 
-%     Displays the performance of various algorithms to find a path for the
-%     travelling salesman problem, usind problems from tsplib library.
-%     The fiels array is a array of strings corresponding to the .tsp files
-%     stored in the /problems/tsp folder. 
-
 files = ["berlin52", "burma14", "ch130", "ch150", "eil51", "eil76", "eil101", "gr96", "gr202", "gr666", ...];
 
 for file = files
