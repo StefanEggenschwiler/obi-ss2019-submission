@@ -11,23 +11,7 @@ The artefacts were developed using the latest version of MATLAB and several add-
 
 The artefacts sole purpose is to solve multiple tsp problems with several different algorithms and output metrics of each solving round as a line of text in a text file. All files aggregated produce the data set which can then being used to conduct an analysis and compare the performance of the different algorithms.
 
-[analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m) is the main script which executed the artefact. Its function is pretty simple:
-
-1. A string array of file names represents the .tsp problems that should be solved. A for-loop loops over the array, parses the file using the [import_tsp](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/import_tsp.m) function which retrieves the name of the TSP instance, the edge weight type (either 2D euclidean or geographical are supported) and a matrix containing the x and y coordinates of each node. All available TSP problems are stored [here](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/problems/tsp/).
-2. In a next step, this information is used as input for the [createGraph](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/createGraph.m) function. This function computes the distance matrix used during the solving process. Additionally, it generates a MATLAB structure containing all relevant data for the solver:
-    * Name of the tsp instance
-    * Number of nodes
-    * Coordinate matrix with x and y coordinates of all nodes
-    * Distance matrix with distance from each node to each node
-3. For each algorithm, one [algo_stats_analysis](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/algo_stats_analysis.m) function is executed with the following parameters:
-    * The graph generated in the previous step
-    * The algorithm function to be executed
-    * The name of the algorithm (used in the log file generation)
-    * additionally for the PSO algorithm, which one of the three implementations of the PSO algorithm should be used
-4. After the for-loop has been executed, two MS DOS commands are executed.
-    1. cmd1 aggregates all .part files generated during the solving process into [one .csv file](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/data/data02.csv).
-    2. cmd2 deletes all .part files.
-
+[analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m) is the main script which executed the artefact.
 ```Matlab
 % Author:
 %     Stefan Eggenschwiler, May 2019.
@@ -61,6 +45,22 @@ system(cmd2);
 
 fprintf('\nFinished!\n')
 ```
+Its function is pretty simple:
+1. A string array of file names represents the .tsp problems that should be solved. A for-loop loops over the array, parses the file using the [import_tsp](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/import_tsp.m) function which retrieves the name of the TSP instance, the edge weight type (either 2D euclidean or geographical are supported) and a matrix containing the x and y coordinates of each node. All available TSP problems are stored [here](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/problems/tsp/).
+2. In a next step, this information is used as input for the [createGraph](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/createGraph.m) function. This function computes the distance matrix used during the solving process. Additionally, it generates a MATLAB structure containing all relevant data for the solver:
+    * Name of the tsp instance
+    * Number of nodes
+    * Coordinate matrix with x and y coordinates of all nodes
+    * Distance matrix with distance from each node to each node
+3. For each algorithm, one [algo_stats_analysis](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/algo_stats_analysis.m) function is executed with the following parameters:
+    * The graph generated in the previous step
+    * The algorithm function to be executed
+    * The name of the algorithm (used in the log file generation)
+    * additionally for the PSO algorithm, which one of the three implementations of the PSO algorithm should be used
+4. After the for-loop has been executed, two MS DOS commands are executed.
+    1. cmd1 aggregates all .part files generated during the solving process into [one .csv file](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/data/data02.csv).
+    2. cmd2 deletes all .part files.
+
 
 ## Prerequisits
 
