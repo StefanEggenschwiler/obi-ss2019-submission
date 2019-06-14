@@ -61,9 +61,15 @@ Its function is pretty simple:
     1. cmd1 aggregates all .part files generated during the solving process into [one .csv file](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/data/data02.csv).
     2. cmd2 deletes all .part files.
 
-[analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m) is the main script which executed the artefact.
+As described previously, [algo_stats_analysis](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/algo_stats_analysis.m) is the main function used to solve the tsp instance.
 ```Matlab
 function [] = algo_stats_analysis(graph, f, algo, varargin)
+    ...
+    % Input:
+    %     graph: Struct, Containing name of TSP, no. of nodes
+    %     coordinates and distance matrix for all nodes.
+    %     f: Function handle, algorithm to implement.
+    %     t: String, name of algorithm.
     ...
     iter = 100;
     ...
