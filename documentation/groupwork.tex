@@ -57,7 +57,7 @@
 	\maketitle
 	
 	\begin{abstract}
-		This paper is a comparison of two natural-inspired algorithms and five traditional algorithms from graph theory and integer linear programming based on defined key metrics. It focuses on describing the experiment setup, the input models and it outlines the metrics applied in the analysis part. Aim of the analysis is to compare the performance of nature-based algorithms with more conventional algorithms used in the solving of travelling salesman problems (TSP).\\
+		In this paper we conduct an analysis with the goal of comparing two nature-inspired algorithms and five traditional algorithms from graph theory and integer linear programming based on defined key metrics. We focus first on describing the experiment setup, the input models and the outline of the metrics applied in the analysis part. Aim of the analysis is to compare the performance of nature-based algorithms with more conventional algorithms used in the solving of travelling salesman problems (TSP).\\
 	\end{abstract}
 	
 	\begin{IEEEkeywords}
@@ -65,7 +65,7 @@
 	\end{IEEEkeywords}
 	%FINAL PAPER
 	\section{Introduction}
- 	According to \cite{bernhard2008combinatorial, halim2019combinatorial, gutin2006traveling} a Combinatorial Optimization (CO) problem consists of a limited set of problems with unique components. The goal is to find the optimal combination of each component. The CO problem can be defined by \cite{blum2003metaheuristics}:\newline
+ 	According to \cite{bernhard2008combinatorial, halim2019combinatorial, gutin2006traveling} a Combinatorial Optimization (CO) problem consists of a limited set of problems with unique components. The goal is to find the optimal combination of each component. The CO problem as by  \cite{blum2003metaheuristics} can be defined with:\newline
  	- a set of variables $X = \{x_1,...,x_n\}$\newline
  	- variable domains $D_1,...,D_n$\newline
  	- constraints among variables\newline
@@ -82,7 +82,7 @@
 	Several nature-inspired algorithms can be applied to TSP models. According to Abraham et. al \cite{abraham2007swarm} Ant-Colony Optimization (ACO) and Particle Swarm Optimization (PSO) are two most popular algorithm in the field of swarm intelligence. On that account, we choose this two algorithm. 
 
 	\subsection{Problem Set}\label{problem_set}
-	The set of TSP instances used in the experiment consists of twenty-two problems varying in size and complexity. The problems were published by \cite{tsplib2019} and are considered as standard in this field of research. TSP problem instances vary from a size between 14 and 2392 nodes. In addition, an optimal solution exists for each instance. This optimal solution is important to compute the accuracy of an algorithm.
+	The set of TSP instances used in the experiment consists of twenty-two problems varying in size and complexity. The problems were published by \cite{tsplib2019} and are considered as standard in this field of research. The TSP problem instances vary from a size between 14 and 2392 nodes. In addition, an optimal solution exists for each instance. It is therefore possible to calculate the overall accuracy of an algorithm and compare it to others. We focused on 22 problem instances. All of them  are synchronous graphs, meaning the graphs do not contain cycles.
 	
 	\subsection{Metric Definition}\label{metric}
 	In order to be able to compare the performance of different algorithms, meaningful metrics have been defined. In the implemented solution, successfully solving a TSP instance yields two values:
@@ -96,10 +96,7 @@
 	\subsection{Traveling Salesman Problem}
 	The TSP investigates the question, which route the salesman should take in order to travel from one city to the next with minimum distance cost and without visiting a city more than once \cite{bernhard2008combinatorial, tsp2019sheridan, moustapha2016advances}. The TSP can be modelled as undirected graph\footnote{formed through symmetric TSP, where the distance between two cities is the same in any opposite direction} or as a complete graph\footnote{formed through asymmetric TSP, where the path may not exist or the distance in both direction can be different} \cite{gutin2006traveling}. 
 	Traditionally, TSP can be defined as an integer linear programming (ILP) model. Three of the most common formulations of TSP are Dantzig-Fulkerson-Johnson (DFJ), Miller-Tucker-Zemlin (MTZ) and Sarin–Sherali–Bhootra (SSB) \cite{moustapha2016advances, gutin2006traveling}. 
-	In order to calculate the optimal route, e.g. brute force searching method can be used. Hereby, all possible permutations will be formed to find the most favorable one route. Likewise, heuristic methods can be used to find the optimal route, such as nearest neighbours\cite{halim2019combinatorial}. 
-
-	\subsection{TSPlib}
-	For our analysis, we rely a widely used library of tsp instances TSPLIB 95\cite{tsplib2019}. The library contains instances of various size and node count, therefore being ideal for performing a benchmark analysis. Additionally, all instances are provided with an optimal distance. It is therefore possible to calculate the overall accuracy of an algorithm and compare it to others.
+	In order to calculate the optimal route, e.g. brute force searching method can be used. Hereby, all possible permutations will be formed to find the most favorable one route. Likewise, heuristic methods can be used to find the optimal route, such as nearest neighbours\cite{halim2019combinatorial}.
 	
 	\section{Optimization Algorithm}
 	Table \ref{tab:classification} show used algorithm, there shortcuts and the naming used in the analysis:
@@ -206,7 +203,7 @@
 	\end{figure}
 	
 	\section{Performance Comparison of selected Optimization Algorithm}
-	This chapter discuss the output of the simulations using \textsc{Matlab}\textsuperscript{\textregistered}. The output was analyzed according to the execution time and the distance compered to optimal distance. The execution time is the duration in seconds consumed to solve a specific TSP problem. For the nature-inspired algorithms ACO and PSO, different amount of population (50, 100, 150 and 200) was defined. Because of time consuming purpose the ACO algorithm was running only with a population of 50 and 100 ants; the simulation with 150 or 200 ants would need to run few days to solve the chosen TSP problems. Table \ref{tab:parameter} provides information about the specified parameters.
+	This chapter discuss the output of the simulations using \textsc{Matlab}\textsuperscript{\textregistered} \footnote{ The analysis was conducted on desktop computer with a Ryzen 7 1700 3.7 GHz CPU and 16GB Dual Channel DDR4 RAM @2400 MHz}.  The output was analyzed according to the execution time and the distance compared to optimal distance. The execution time is the duration in seconds used to solve a specific TSP problem. For the nature-inspired algorithms ACO and PSO, different population sizes (50, 100, 150 and 200) were defined. Because of time related reasons the ACO algorithm was running only with a population of 50 and 100 ants. Population sizes of 150 and 200 ants would have resulted in computation times of several days. Table \ref{tab:parameter} provides information about the specified parameters sets used in the algorithms.
 	\begin{table}[H]
     	\centering
     	\begin{tabular}{l | l l l}
@@ -224,7 +221,7 @@
     	\label{tab:parameter}
     \end{table} 
 
-	In the simulation each algorithm was running 100 times with twenty-two benchmark problems from TSPlib \cite{tsplib2019}. Table \ref{tab:tspgroupbynodesize} shows the proposed TSP problems with the optimum distance. The TSP problems were added to a range according to the node size: "Small" $(n<100)$, "Medium" $(99<n<200)$ and "Big" $(n>199)$. The partitioning was made by taking into account the number of nodes and the time needed to solve the TSP problem. 
+	In the analysis, each algorithm was executed 100 times with twenty-two benchmark problems from TSPlib \cite{tsplib2019}. Table \ref{tab:tspgroupbynodesize} shows the selected TSP problems with the optimal distance. The TSP problems were grouped according to their node size: "Small" $(n<100)$, "Medium" $(99<n<200)$ and "Big" $(n>199)$. The partitioning was made by taking into account the number of nodes and the time needed to solve the TSP problems. 
 	\begin{table}[H]
 	    \centering
 	    \begin{tabular}{ | l | l | l | l | }
@@ -257,44 +254,62 @@
 	    \label{tab:tspgroupbynodesize}
 	\end{table}
 
-
-
-
-
-
-
-
     \subsection{Execution Time}
-	    
-	  \begin{figure}[h]
+    Execution time was compared with the number of nodes and it was also examined whether the population size had an influence on it. Furthermore, the algorithms and TSP instances were considered. The Table \ref{tab:performancesummary} shows an overview of the execution time (Time (s)), mean distance (Avg. Dist.), optimal distance (Opt.Dist), percentage deviation from the optimal distance (\%), minimum and maximum distance (MIN/MAX) and the standard deviation ($\sigma$) split by TSP and algorithm.
+   Figures \ref{fig:timenodesize_small}, \ref{fig:timenodesize_m} and \ref{fig:timenodesize_big} show the execution time range for different algorithms grouped by TSP classification. Figure \ref{fig:boxPlotTime} shows an overall range of execution time grouped by TSP classification.
+   \begin{figure}[H]
     		\centering
-    		\includegraphics[width=\columnwidth]{time_goupNodeSize.png}
+    		\includegraphics[width=\columnwidth]{boxplot_time_S.png}
+    		\caption{Overall execution time for TSP-Small}
+    		\label{fig:timenodesize_small}
+	 \end{figure}
+	 \begin{figure}[H]
+    		\centering
+    		\includegraphics[width=\columnwidth]{boxplot_time_M.png}
+    		\caption{Overall execution time for TSP-Medium}
+    		\label{fig:timenodesize_m}
+	 \end{figure}
+	 \begin{figure}[H]
+    		\centering
+    		\includegraphics[width=\columnwidth]{boxplot_time_BIG.png}
+    		\caption{Overall execution time for TSP-Medium}
+    		\label{fig:timenodesize_big}
+	 \end{figure}
+   The execution time depends strongly on the amount of nodes. Figure \ref{fig:timenodesize} depicts the influence of the node size on the execution time. As the number of nodes increased, the two
+   nature-inspired algorithms required more time to execute, especially the ACO algorithm scales bad with the number of nodes. 
+   The number of the population with ACO algorithm had a influence on the execution time. Compared to the result with population 50, the ACO with population 100 had almost twice as long. Opt\_greedy algorithm came right after the ACO. 
+	  \begin{figure}[H]
+    		\centering
+    		\includegraphics[width=\columnwidth]{time_node_alg.png}
     		\caption{Comparison time to node size}
-    		\label{fig:boxPlotTime}
+    		\label{fig:timenodesize}
 	    \end{figure}
-	   
-	  \begin{figure}[h]
-    		\centering
-    		\includegraphics[width=\columnwidth]{distance_opt_dostance_big.png}
-    		\caption{Average distance compared to optimal distance for Big}
-    		\label{fig:distanceBig}
-	    \end{figure}
-	    
-	      \begin{figure}[h]
-    		\centering
-    		\includegraphics[width=\columnwidth]{distance_opt_dostance_medium.png}
-    		\caption{Average distance compared to optimal distance for Medium}
-    		\label{fig:distanceMedium}
-	    \end{figure}
-	    
-	    \begin{figure}[h]
-    		\centering
-    		\includegraphics[width=\columnwidth]{distance_opt_dostance_small.png}
-    		\caption{Average distance compared to optimal distance for Small}
-    		\label{fig:distanceSmall}
-	    \end{figure}
-	 
+
     \subsection{Edge Distance of the Solution}
+    Table \ref{tab:deviationp1} and \ref{tab:deviationp2} shows the average distance of each algorithm based on the TSP problem. The percentage deviation of the individual algorithms from the optimal distance was also taken into account. Especially PSO appears to be very unfavorable when the number of nodes increases. The higher the number of nodes, the greater the percentage deviation from the optimal distance. For TSP problems with a very low number of nodes, such as Burma with 14 or Ulysses with 16, the PSO algorithm (APSO and QPSO) could show very good results with a population of 150. The ACO followed the PSO with significantly better results. The two nature-inspired algorithms show a significantly lower result here as well.
+    
+    %  \begin{figure}[h]
+    % 		\centering
+    % 		\includegraphics[width=\columnwidth]{distance_opt_dostance_big.png}
+    % 		\caption{Average distance compared to optimal distance for Big}
+    % 		\label{fig:distanceBig}
+	   % \end{figure}
+	    
+	   %   \begin{figure}[h]
+    % 		\centering
+    % 		\includegraphics[width=\columnwidth]{distance_opt_dostance_medium.png}
+    % 		\caption{Average distance compared to optimal distance for Medium}
+    % 		\label{fig:distanceMedium}
+	   % \end{figure}
+	    
+	   % \begin{figure}[h]
+    % 		\centering
+    % 		\includegraphics[width=\columnwidth]{distance_opt_dostance_small.png}
+    % 		\caption{Average distance compared to optimal distance for Small}
+    % 		\label{fig:distanceSmall}
+	   % \end{figure}
+    
+    
     
     \begin{table}[h]
 	    \centering
@@ -367,7 +382,8 @@ ulysses22 & 22.09 \% & 30.29 \% & 32.88 \% & 17.8 \% & 35.18 \% & 20.45 \% & 20.
 
 
     \section{Conclusion}
-
+    In conclusion, our conducted analysis shows that traditional stochastic and heuristic graph algorithms outperformed both the ACO and the three tested implementations of the PSO algorithm. Especially the ACO algorithm seems to scale rather poorly with node count which concluded in computation times of several hours for bigger ant colony sizes if applied on the largest TSP instances. This is a significant deviation from the other tested algorithms. It was to be expected that the execution time of the optimal greedy algorithm would be inferior compared to the other heuristic and stochastic algorithms due to its linear scaling.\\
+    It has to be stated that we only tested one parameter setting configuration per nature-inspired algorithm. Repeating the scenarios with additional parameter settings could improve both accuracy and execution time. In an extension of this paper, it would therefore be interesting to take a look at the possible impact of different parameter settings for both ACO and PSO.
 
 	\bibliographystyle{IEEEtran}
 	\bibliography{IEEEabrv,bibliography}
