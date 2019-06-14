@@ -61,6 +61,23 @@ Its function is pretty simple:
     1. cmd1 aggregates all .part files generated during the solving process into [one .csv file](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/data/data02.csv).
     2. cmd2 deletes all .part files.
 
+[analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m) is the main script which executed the artefact.
+```Matlab
+function [] = algo_stats_analysis(graph, f, algo, varargin)
+    ...
+    iter = 100;
+    ...
+        parfor i = 1:1:iter
+            fileID = fopen(strcat('../../data/', graph.name, algo, num2str(i), '.part'), 'w');
+            [p, d, t] = f(graph.edges);
+            fprintf(fileID, '%s:%s:%s:%s:%s\n', algo, graph.name, num2str(i), num2str(d), num2str(t));
+            fclose(fileID);
+        end
+    ...
+end
+```
+
+
 
 ## Prerequisits
 
