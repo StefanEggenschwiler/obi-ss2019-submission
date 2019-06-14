@@ -65,12 +65,6 @@ As described previously, [algo_stats_analysis](https://github.com/StefanEggensch
 ```Matlab
 function [] = algo_stats_analysis(graph, f, algo, varargin)
     ...
-    % Input:
-    %     graph: Struct, Containing name of TSP, no. of nodes
-    %     coordinates and distance matrix for all nodes.
-    %     f: Function handle, algorithm to implement.
-    %     t: String, name of algorithm.
-    ...
     iter = 100;
     ...
         parfor i = 1:1:iter
@@ -82,7 +76,13 @@ function [] = algo_stats_analysis(graph, f, algo, varargin)
     ...
 end
 ```
-
+The function is used to generate the data set used during the analysis part of our research. It simply takes the graph construct previously generated in [analysis.m](https://github.com/StefanEggenschwiler/obi-ss2019-submission/blob/master/code/matlab/analysis.m#L15), the solver function and the name of the algorithm. It then uses MATLABs [parfor-loop](https://ch.mathworks.com/help/parallel-computing/parfor.html) to concurrently solve the tsp instance 100 times using the provided solver function. During each computation cycle, a .part file is generated and the results of the solver is saved in this file. The results are stored in separate files in order to bypass potential file corruption issues that could occur during concurrent I/O functions (file writing). The following information is stored per cycle execution:
+* *algorithm:tspInstance:executionNo:calculatedDistance:executionDurationInSec**
+    1. algorithm, name of the used algorithm
+    2. tspInstance, name of the solved tsp instance
+    3. executionNo, number of the execution cycle (variable i, 1-100)
+    4. calculatedDistance, distance of the shortest path as calculated by the algorithm, as floating-point number
+    5. executionDurationInSec, time duration between start and end of the solving process
 
 
 ## Prerequisits
